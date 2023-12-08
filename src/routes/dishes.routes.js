@@ -6,6 +6,7 @@ const dishesController = new DishesController();
 
 dishesRoutes.post('/:user_id', dishesController.create);
 dishesRoutes.post('/:id', dishesController.show);
+dishesRoutes.post('/:id', dishesController.delete);
 
 
 module.exports = dishesRoutes;
