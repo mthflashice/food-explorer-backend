@@ -67,6 +67,8 @@ async update (request, response){
         category: category ?? dish.category,
         price: price ?? dish.price,
         image: image ?? dish.image,
+        updated_by: request.user.id,
+        updated_at: knex.fn.now(),
     };
 
     if (imageFilename) {
@@ -94,7 +96,6 @@ async update (request, response){
         await knex('ingredients').insert(ingredientsInsert);
     }
 
-    dishUpdate.updated_by = dish.created_by;
 
     await knex('dishes').where({id}).update(dishUpdate);
 
