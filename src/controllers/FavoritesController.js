@@ -17,7 +17,7 @@ async index(request,response){
     const user_id = request.user.id;
 
     const favorites = await knex('favorites')
-    .select('dish_id')
+    .select('dishes.*', 'favorites.dish_id')
     .innerJoin('dishes', 'dishes.id', 'favorites.dish_id')
     .where({ user_id });
 
