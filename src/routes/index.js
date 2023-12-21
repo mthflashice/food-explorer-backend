@@ -8,7 +8,7 @@ const cartsRouter = require('./carts.routes')
 
 
 const routes = Router();
-routes.use ('/user', userRouter);
+routes.use ('/users', userRouter);
 routes.use ('/sessions', sessionsRoutes);
 routes.use ('/dishes', dishesRoutes);
 routes.use ('ordens', ordersRouter);
