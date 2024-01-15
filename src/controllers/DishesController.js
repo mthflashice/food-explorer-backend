@@ -71,7 +71,6 @@ async update (request, response){
         description: description ?? dish.description,
         category: category ?? dish.category,
         price: price ?? dish.price,
-        image: image ?? dish.image,
         updated_by: request.user.id,
         updated_at: knex.fn.now(),
     };
