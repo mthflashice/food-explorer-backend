@@ -1,7 +1,7 @@
 const {Router} = require('express')
 const userRouter = require ('./users.routes')
 const dishesRoutes = require ('./dishes.routes')
-const sessionsRoutes = require ('./session.routes')
+const sessionsRoutes = require ('./sessions.routes')
 const ordersRouter = require('./orders.routes')
 const favoritesRouter = require('./favorites.routes')
 const cartsRouter = require('./carts.routes')
