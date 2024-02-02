@@ -11,7 +11,7 @@ const routes = Router();
 routes.use ('/users', usersRouter);
 routes.use ('/sessions', sessionsRoutes);
 routes.use ('/dishes', dishesRoutes);
-routes.use ('ordens', ordersRouter);
+routes.use ('/orders', ordersRouter);
 routes.use ('/favorites', favoritesRouter);
 routes.use ('/carts', cartsRouter);
 
