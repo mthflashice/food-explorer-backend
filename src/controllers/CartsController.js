@@ -94,6 +94,17 @@ class CartsController {
 
     return response.json();
   }
+
+  async getCartQuantity(request, response) {
+    try {
+      const user_id = request.user.id;
+      const count = await knex('cart_items').count('*').where({ user_id }).first();
+      return response.json({ quantity: count });
+    } catch (error) {
+      console.error('Erro ao buscar quantidade do carrinho:', error);
+      return response.status(500).json({ error: 'Erro interno do servidor' });
+    }
+  }
 }
 
 module.exports = CartsController;
