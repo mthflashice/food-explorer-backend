@@ -72,7 +72,7 @@ async delete(request, response) {
     async getCartQuantity(request, response) {
       try {
         const user_id = request.user.id;
-        const count = await knex('myOrders').count('*').where({ user_id }).first();
+        const count = await knex('cart_items').count('*').where({ user_id }).first();
         return response.json({ quantity: count });
       } catch (error) {
         console.error('Erro ao buscar quantidade do carrinho:', error);
