@@ -11,5 +11,7 @@ myOrdersRoutes.use(ensureAuthenticated);
 myOrdersRoutes.get('/', myOrdersController.index);
 myOrdersRoutes.post('/', myOrdersController.create);
 myOrdersRoutes.delete('/:dish_id', myOrdersController.delete);
+myOrdersRoutes.put('/:dish_id', myOrdersController.update);
+myOrdersRoutes.get('/quantity', myOrdersController.getCartQuantity);
 
 module.exports = myOrdersRoutes;

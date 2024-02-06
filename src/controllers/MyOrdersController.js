@@ -41,6 +41,44 @@ async delete(request, response) {
 
     return response.json();
     }
-}
 
-module.exports = MyOrdersController;
+    async update(request, response) {
+      try {
+        const { dish_id } = request.params;
+        const { quantity } = request.body;
+        const user_id = request.user.id;
+  
+        // Verifica se o pedido existe
+        const order = await knex('myOrders')
+          .where({ user_id, dish_id })
+          .first();
+  
+        if (!order) {
+          return response.status(404).json({ error: 'Pedido não encontrado' });
+        }
+  
+        // Atualiza a quantidade do pedido
+        await knex('myOrders')
+          .where({ user_id, dish_id })
+          .update({ quantity });
+  
+        return response.json({ message: 'Pedido atualizado com sucesso' });
+      } catch (error) {
+        console.error('Erro ao atualizar o pedido:', error);
+        return response.status(500).json({ error: 'Erro interno do servidor' });
+      }
+    }
+  
+    async getCartQuantity(request, response) {
+      try {
+        const user_id = request.user.id;
+        const count = await knex('myOrders').count('*').where({ user_id }).first();
+        return response.json({ quantity: count });
+      } catch (error) {
+        console.error('Erro ao buscar quantidade do carrinho:', error);
+        return response.status(500).json({ error: 'Erro interno do servidor' });
+      }
+    }
+  }
+  
+  module.exports = MyOrdersController;
