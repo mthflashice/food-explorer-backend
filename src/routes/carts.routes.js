@@ -13,7 +13,7 @@ cartsRoutes.post('/', cartsController.create);
 cartsRoutes.get('/:id', cartsController.show);
 cartsRoutes.delete('/:id', cartsController.delete);
 cartsRoutes.patch('/:id', cartsController.update);
-cartsRoutes.get('/cart/quantity', cartsController.getCartQuantity);
+cartsRoutes.get('/quantity', cartsController.getCartQuantity);
 
 
 
